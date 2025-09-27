@@ -1,11 +1,13 @@
+import { defineNuxtConfig } from 'nuxt/config'
+
 export default defineNuxtConfig({
-  compatibilityDate: '2025-09-27',
+  compatibilityDate: '2024-09-27',
   devtools: { enabled: false },
+  // css: ['~/assets/css/styles.css'],
   css: ['~/assets/css/styles.css'],
   modules: [],
-  nitro: {
-    preset: 'node'
-  },
+  components: false,
+  ssr: false,
   app: {
     head: {
       title: 'Sweet Scoops for a Cause - Rotary Club Charity Ice Cream Event',

@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
+    "build": "if exist dist rmdir /s /q dist && mkdir dist && copy index.html dist\\ && copy styles.css dist\\ && copy script.js dist\\",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
-    "nuxt": "3.12.0",
+    "nuxt": "3.10.3",
     "vue": "^3.5.0",
     "vue-router": "^4.4.0"
   },
