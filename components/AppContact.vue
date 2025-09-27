@@ -59,6 +59,8 @@
 </template>
 
 <script setup>
+const { $supabase } = useNuxtApp()
+
 const form = reactive({
   name: '',
   email: '',
@@ -67,7 +69,7 @@ const form = reactive({
   message: ''
 })
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
   // Basic validation
   if (!form.name || !form.email || !form.phone || !form.orderType) {
     showNotification('Please fill in all required fields.', 'error')
@@ -81,12 +83,24 @@ const handleSubmit = () => {
     return
   }
 
-  // Simulate form submission
-  showNotification('Thank you! Your message has been sent. We\'ll get back to you soon!', 'success')
-  // Reset form
-  Object.keys(form).forEach(key => {
-    form[key] = ''
+  // Submit to Supabase
+  const { data, error } = await $supabase.from('contacts').insert({
+    name: form.name,
+    email: form.email,
+    phone: form.phone,
+    order_type: form.orderType,
+    message: form.message
   })
+
+  if (error) {
+    showNotification('Error submitting form: ' + error.message, 'error')
+  } else {
+    showNotification('Thank you! Your message has been sent. We\'ll get back to you soon!', 'success')
+    // Reset form
+    Object.keys(form).forEach(key => {
+      form[key] = ''
+    })
+  }
 }
 
 const showNotification = (message, type = 'success') => {

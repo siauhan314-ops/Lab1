@@ -8,6 +8,12 @@ export default defineNuxtConfig({
   modules: [],
   components: false,
   ssr: false,
+  runtimeConfig: {
+    public: {
+      supabaseUrl: process.env.SUPABASE_URL,
+      supabaseKey: process.env.SUPABASE_KEY
+    }
+  },
   app: {
     head: {
       title: 'Sweet Scoops for a Cause - Rotary Club Charity Ice Cream Event',
