@@ -38,6 +38,9 @@ const stat1 = ref(null)
 const stat2 = ref(null)
 const stat3 = ref(null)
 
+
+
+
 const scrollToSection = (sectionId) => {
   const element = document.getElementById(sectionId)
   if (element) {
@@ -87,7 +90,3 @@ onMounted(() => {
   }
 })
 </script>
-
-<style scoped>
-/* Component-specific styles if needed */
-</style>
