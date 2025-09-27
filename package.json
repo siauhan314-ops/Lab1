@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "if exist dist rmdir /s /q dist && mkdir dist && copy index.html dist\\ && copy styles.css dist\\ && copy script.js dist\\",
+    "build": "[ -d dist ] && rm -rf dist; mkdir -p dist && cp index.html styles.css script.js dist/",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
